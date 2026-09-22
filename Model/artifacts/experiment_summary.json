@@ -1,0 +1,65 @@
+{
+  "experiment": "Nicotine Craving and Anxiety Time-Series Forecasting",
+  "timestamp": "2026-09-22T10:23:14.399640",
+  "dataset": {
+    "path": "C:\\Users\\admin\\Documents\\Portofolio\\Smoking Addiction\\Dataset\\Nicotine_Craving_Anxiety_Dynamics_30Days.csv",
+    "total_rows": 30000,
+    "participants": 1000,
+    "days_per_participant": 30
+  },
+  "targets": [
+    "Overall_Craving_Score",
+    "Daily_Anxiety_Score"
+  ],
+  "temporal_split": {
+    "train_days": "1-20",
+    "val_days": "21-25",
+    "test_days": "26-30"
+  },
+  "feature_engineering": {
+    "lag_periods": [
+      1,
+      2,
+      3
+    ],
+    "roll_windows": [
+      3,
+      7
+    ],
+    "total_features": 49
+  },
+  "models_trained": [
+    "Persistence Baseline",
+    "Ridge",
+    "Lasso",
+    "ElasticNet",
+    "RandomForest",
+    "GradientBoosting",
+    "HistGradientBoosting",
+    "XGBoost",
+    "LightGBM",
+    "LSTM"
+  ],
+  "best_craving_model": {
+    "Model": "XGBoost",
+    "Split": "Test",
+    "MAE": 0.235,
+    "RMSE": 0.3022,
+    "MAPE": 90047169204585.58,
+    "R2": 0.968
+  },
+  "best_anxiety_model": {
+    "Model": "LightGBM",
+    "Split": "Test",
+    "MAE": 0.3315,
+    "RMSE": 0.4216,
+    "MAPE": 296376251019461.6,
+    "R2": 0.9546
+  },
+  "cross_validation": {
+    "strategy": "TimeSeriesSplit",
+    "n_splits": 5,
+    "craving_rmse_mean": 0.3117,
+    "craving_rmse_std": 0.0053
+  }
+}
